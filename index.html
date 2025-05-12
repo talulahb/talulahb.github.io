@@ -2,68 +2,363 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Australia in Fiamme - Crisi Climatica 2023</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Documentazione sugli incendi catastrofici in Australia durante il Black Summer 2019-2020" />
+  <meta name="keywords" content="Australia, Black Summer, incendi, clima, disastro naturale" />
+  <title>Black Summer - Incendi Catastrofici 2019/20</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/recharts/2.1.9/Recharts.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/3.9.1/chart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script defer src="script.js"></script>
+  <script src="script.js"></script> 
+
+  <!-- Preconnect per ottimizzazione caricamento font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="hero">
-    <div class="overlay"></div>
-    <div class="hero-content">
-      <h1>Australia in Fiamme</h1>
-      <p>Un'analisi visiva della crisi climatica nel 2023</p>
-      <a href="#gallery" class="cta-button">Esplora</a>
-    </div>
+  <!-- Easter egg nascosto per sviluppatori, visibile solo in console -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      console.log("Chart.js disponibile?", typeof Chart !== 'undefined');
+      if (typeof Chart !== 'undefined') {
+        console.log("Chart.js è caricato correttamente!");
+      } else {
+        console.error("Chart.js non è stato caricato!");
+      }
+    });
+  </script>
+
+  <!-- Header con nav sticky -->
+  <header class="main-header">
+    <nav class="navbar">
+      <div class="logo">Black Summer</div>
+      <ul class="nav-links">
+        <li><a href="#contenuto" class="nav-link">La crisi</a></li>
+        <li><a href="#impatti" class="nav-link">Impatti</a></li>
+        <li><a href="#temperature" class="nav-link">Temperature</a></li>
+        <li><a href="#gallery" class="nav-link">Galleria</a></li>
+      </ul>
+      <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </nav>
   </header>
 
-  <main>
-    <section id="gallery" class="gallery-section">
-      <h2>Immagini Satellitari</h2>
-      <div class="image-grid">
-        <div class="card">
-          <img src="midia/australia_fire_1.jpg" alt="Vista satellitare 1" />
-          <p>Fumo visibile da centinaia di chilometri</p>
+  <!-- HERO CON SFONDO PARALASSE -->
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Black Summer</h1>
+      <p>Incendi devastanti in Australia 2019-2020</p>
+      <a href="#contenuto" class="cta-button">Scopri di più</a>
+    </div>
+    <div class="scroll-indicator">
+      <div class="chevron"></div>
+      <div class="chevron"></div>
+      <div class="chevron"></div>
+    </div>
+  </section>
+
+ <!-- GRAFICO: AREA BRUCIATA -->
+<section class="chart-section reveal-section">
+  <h2>Area bruciata negli ultimi anni</h2>
+  <div class="chart-container">
+    <canvas id="burnedAreaChart"></canvas>
+  </div>
+  <p class="chart-note">Fonte dati: CSIRO, Australian Bureau of Meteorology</p>
+</section>
+
+  <!-- TESTO -->
+  <section class="info-section reveal-section" id="contenuto">
+    <h2>Il Black Summer australiano</h2>
+    <div class="content-grid">
+      <div class="text-content">
+        <p>Durante l'estate australiana tra il 2019 e il 2020, il paese è stato colpito da incendi boschivi di proporzioni catastrofiche. Il fenomeno, noto come "<span class="highlight">Black Summer</span>", ha causato ingenti danni ambientali, umani ed economici. Circa <strong>18 milioni di ettari</strong> di territorio sono stati devastati dalle fiamme.</p>
+        <p>La crisi ha portato alla morte di almeno 33 persone e oltre 400 per cause legate all'inalazione di fumo. Circa 3.000 abitazioni sono state distrutte. La biodiversità ha subito un colpo durissimo: si stima che circa <strong>3 miliardi di animali</strong> siano stati uccisi o abbiano perso il proprio habitat.</p>
+        <p>Gli incendi hanno prodotto una quantità enorme di fumo e CO₂, visibile anche dallo spazio. Le condizioni meteorologiche estreme, in parte legate ai cambiamenti climatici, hanno esacerbato la crisi.</p>
+      </div>
+      <div class="quote-container">
+        <blockquote>
+          "Il Black Summer ha cambiato per sempre il modo in cui l'Australia gestisce gli incendi boschivi e affronta i cambiamenti climatici."
+          <cite>— Commissione Reale sugli incendi boschivi</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUMERI STATISTICI con striscia nera -->
+  <section class="impact-section black-strip reveal-section" id="impatti">
+    <h2>Danni Economici e Sociali</h2>
+    <div class="facts">
+      <div class="fact" data-aos="fade-up">
+        <div class="icon-container">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M11,17V16H9V14H13V13H10A1,1 0 0,1 9,12V9A1,1 0 0,1 10,8H11V7H13V8H15V10H11V11H14A1,1 0 0,1 15,12V15A1,1 0 0,1 14,16H13V17H11Z" />
+          </svg>
         </div>
-        <div class="card">
-          <img src="midia/australia_fire_2.jpg" alt="Vista satellitare 2" />
-          <p>Incendi in tempo reale (gennaio 2023)</p>
+        <span class="number" data-value="103000000000">0</span>
+        <p>Danni economici (in $AUD)</p>
+      </div>
+      <div class="fact" data-aos="fade-up" data-aos-delay="200">
+        <div class="icon-container">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+          </svg>
+        </div>
+        <span class="number" data-value="8000000">0</span>
+        <p>Persone esposte al fumo tossico</p>
+      </div>
+      <div class="fact" data-aos="fade-up" data-aos-delay="400">
+        <div class="icon-container">
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M12,2A9,9 0 0,0 3,11C3,14.03 4.53,16.82 7,18.47V22H9V19H11V22H13V19H15V22H17V18.46C19.47,16.81 21,14 21,11A9,9 0 0,0 12,2M8,11A2,2 0 0,1 10,13A2,2 0 0,1 8,15A2,2 0 0,1 6,13A2,2 0 0,1 8,11M16,11A2,2 0 0,1 18,13A2,2 0 0,1 16,15A2,2 0 0,1 14,13A2,2 0 0,1 16,11M12,14L13.5,17H10.5L12,14Z" />
+          </svg>
+        </div>
+        <span class="number" data-value="33">0</span>
+        <p>Vittime dirette degli incendi</p>
+      </div>
+    </div>
+    <div class="data-source">
+      <p>Dati forniti da: Australian Bureau of Statistics, CSIRO e WWF</p>
+      <!-- Easter egg: commento visibile nel codice sorgente -->
+      <!-- Coordinate del luogo simbolo della ricostruzione post-incendi: -35.2809, 149.1300 -->
+    </div>
+  </section>
+
+  <!-- NUOVO: TEMPERATURE -->
+  <section class="temperature-section reveal-section" id="temperature">
+    <h2 class="text-center">Temperature in Australia: Un Trend Preoccupante</h2>
+    <p class="section-intro">L'aumento delle temperature è direttamente collegato all'intensificazione degli incendi boschivi in Australia.</p>
+    
+    <div class="temp-maps single-map">
+      <div class="temp-map active">
+        <img src="media/australia_fire_3.jpg" alt="Mappa termica Australia" class="temp-img zoom-on-hover" />
+      </div>
+    </div>
+    
+      <div class="temp-info">
+        <div class="temp-scale">
+          <div class="scale-gradient"></div>
+          <div class="scale-labels">
+            <span>18°C</span>
+            <span>25°C</span>
+            <span>30°C</span>
+            <span>35°C</span>
+            <span>40°C+</span>
+          </div>
+        </div>
+        <div class="temp-facts">
+          <div class="temp-fact">
+            <h4>Aumento medio temperatura</h4>
+            <p><span class="highlight">+1.4°C</span> dal 1910</p>
+          </div>
+          <div class="temp-fact">
+            <h4>Record temperatuta 2019</h4>
+            <p><span class="highlight">41.9°C</span> media nazionale</p>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+    <p class="data-source">Fonte: Australian Bureau of Meteorology</p>
+  </section>
 
-    <section class="facts-section">
-      <h2>Impatto Ambientale</h2>
-      <div class="facts">
-        <div class="fact">
-          <span class="number" data-value="18000000">0</span>
-          <p>Ettari di foresta andati distrutti</p>
-        </div>
-        <div class="fact">
-          <span class="number" data-value="1000000000">0</span>
-          <p>Animali selvatici persi</p>
-        </div>
-        <div class="fact">
-          <span class="number" data-value="400000000">0</span>
-          <p>Tonnellate di CO₂ emesse</p>
+  <!-- VIDEO con Lazy loading -->
+  <section class="video-section reveal-section">
+    <h2>Video Satellitari del Disastro</h2>
+    <div class="video-container">
+      <iframe
+        data-src="Pins-Story.Rife.mp4"
+        class="lazy-video"
+        title="Incendi Australia 2019-2020 - Video Satellitare"
+        allowfullscreen>
+      </iframe>
+      <div class="video-placeholder">
+        <button class="play-video-btn">
+          <svg viewBox="0 0 24 24" class="play-icon">
+            <path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+          </svg>
+          <span>Avvia video</span>
+        </button>
+      </div>
+    </div>
+    <p class="video-caption">Immagini satellitari mostrano l'evoluzione degli incendi da novembre 2019 a febbraio 2020</p>
+  </section>
+
+  <!-- GALLERIA migliorata con lightbox -->
+  <section class="gallery-section reveal-section" id="gallery">
+    <h2>Immagini dagli incendi</h2>
+    <div class="image-grid">
+      <div class="card" data-type="image">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="media/incendio_1.jpg" alt="Incendio vista satellitare" loading="lazy" />
+          </div>
+          <div class="card-back">
+            <p>Incendi che copre l'intera costa sud-orientale, visibili dallo spazio. Immagini NASA, dicembre 2019.</p>
+          </div>
         </div>
       </div>
-    </section>
+      <div class="card" data-type="image">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="media/incendio_2.jpg.webp" alt="Fumo sopra le città" loading="lazy" />
+          </div>
+          <div class="card-back">
+            <p>Intere aree rurali in fiamme (dicembre 2019). Oltre 5 milioni di ettari bruciati solo nel Nuovo Galles del Sud.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card" data-type="image">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="media/incendio_3.jpg" alt="canguro salvato" loading="lazy" />
+          </div>
+          <div class="card-back">
+            <p>Fauna selvatica in pericolo critico. Si stima che 3 miliardi di animali siano stati colpiti dagli incendi.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section class="chart-section">
-      <h2>Emissioni CO₂ in Australia (2010–2023)</h2>
-      <canvas id="co2Chart" width="600" height="400"></canvas>
-    </section>
+  <!-- GRAFICO CO2 migliorato - CORREZIONE: aggiunto tag di apertura section -->
+    <section class="chart-section reveal-section">
+    <h2>Emissioni di CO₂ durante il Black Summer</h2>
+    <div class="chart-container">
+      <canvas id="co2Chart"></canvas>
+    </div>
+    <p class="chart-note">Fonte: Global Fire Emissions Database, 2020</p>
+  </section>
 
-    <section class="info-section">
-      <h2>Analisi</h2>
-      <p>Gli incendi del 2023 sono tra i più devastanti nella storia recente dell’Australia. Il cambiamento climatico ha intensificato ondate di calore e siccità, creando condizioni perfette per incendi estesi e incontrollabili.</p>
-    </section>
-  </main>
+  <!-- POST-DISASTRO -->
+  <section class="info-section reveal-section">
+    <h2>Dopo il Disastro: Ricostruzione e Prevenzione</h2>
+    <p>
+      Dopo il Black Summer, sono stati avviati programmi di riforestazione, rafforzati i sistemi di allerta incendi e adottate nuove politiche ambientali.
+      <span class="highlight-link" id="openModal">Scopri di più sui progetti di riforestazione.</span>
+    </p>
+    <div class="image-grid">
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="media/volontari_2.jpg.webp" alt="Piantumazione di alberi" loading="lazy" />
+          </div>
+          <div class="card-back">
+            <p>Progetti di riforestazione per ripristinare gli ecosistemi. Obiettivo: 20 milioni di alberi entro il 2030.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="media/squadra.jpeg" alt="Squadra antincendio" loading="lazy" />
+          </div>
+          <div class="card-back">
+            <p>Investimenti in nuove tecnologie e addestramento per i vigili del fuoco. Oltre 500 milioni di AUD stanziati dal governo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <section class="info-section reveal-section">
+    <h2>Contesto e Impatti</h2>
+    <div class="content-grid">
+      <div class="text-content">
+        <p>
+          Il cambiamento climatico ha contribuito alla siccità estrema e alle temperature record, rendendo il territorio altamente infiammabile. Gli effetti sono stati drammatici: impatti sulla salute, perdita di biodiversità, danni economici e sociali. L'evento ha generato circa 400 milioni di tonnellate di CO₂.
+        </p>
+      </div>
+      <div class="quote-container">
+        <blockquote>
+          "La stagione degli incendi 2019-2020 è stata un campanello d'allarme per l'Australia e per il mondo intero."
+          <cite>— Dott.ssa Sarah Collins, Climatologa</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="info-section reveal-section">
+    <h2>Risposta e Ricostruzione</h2>
+    <p>
+      La comunità scientifica e umanitaria ha risposto con programmi di soccorso, monitoraggio ambientale e ricostruzione degli habitat. Tuttavia, la ricostruzione richiederà anni e richiede un impegno concreto per mitigare i cambiamenti climatici globali.
+    </p>
+    <div class="cta-container">
+      <a href="#" class="cta-button secondary">Scopri come contribuire</a>
+    </div>
+  </section>
+
+  <!-- MODALE migliorata -->
+  <div id="infoModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h2>Progetti di Riforestazione</h2>
+      <div class="modal-grid">
+        <div class="modal-text">
+          <p>
+            Dopo il Black Summer, migliaia di volontari e enti locali si sono uniti per piantare milioni di alberi nativi.
+            Gli ecosistemi più colpiti, come le foreste di eucalipto e le zone umide, sono ora oggetto di monitoraggio intensivo.
+          </p>
+          <ul class="feature-list">
+            <li>🌱 Piantumazione di oltre 20 milioni di alberi entro il 2030.</li>
+            <li>🐨 Installazione di rifugi per fauna selvatica in zone critiche.</li>
+            <li>💧 Recupero dei corsi d'acqua per ristabilire equilibrio ecologico.</li>
+            <li>📡 Tecnologie satellitari per il controllo della rinascita vegetale.</li>
+          </ul>
+        </div>
+        <div class="modal-img">
+          <img src="media/volontari.jpeg" alt="Volontari che piantano alberi" loading="lazy" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="cta-button" id="modalAction">Partecipa come volontario</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX per galleria -->
+  <div id="lightbox" class="lightbox">
+    <span class="close" id="closeLightbox">&times;</span>
+    <img id="lightbox-img" class="lightbox-content" />
+    <div id="lightbox-caption"></div>
+    <button id="prev-img" class="lightbox-nav prev">&lt;</button>
+    <button id="next-img" class="lightbox-nav next">&gt;</button>
+  </div>
+
+  <!-- FOOTER migliorato -->
   <footer>
-    <p>© 2025 Crisi Climatica | Fonti: NASA, CSIRO, Copernicus</p>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Black Summer</h3>
+        <p>Documentazione e analisi degli incendi boschivi australiani 2019-2020</p>
+      </div>
+      <div class="footer-section">
+        <h3>Fonti e dati</h3>
+        <ul>
+          <li>CSIRO</li>
+          <li>WWF Australia</li>
+          <li>NASA Earth Observatory</li>
+          <li>Australian Bureau of Meteorology</li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contatti</h3>
+        <p>Per informazioni o collaborazioni: <a href="mailto:info@blacksummer-project.org">info@blacksummer-project.org</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 - Ricerca sulla Black Summer australiana</p>
+      <!-- HTML Comment: Konami code: ↑ ↑ ↓ ↓ ← → ← → B A -->
+    </div>
   </footer>
 </body>
 </html>
