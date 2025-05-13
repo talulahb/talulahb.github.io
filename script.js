@@ -1,6 +1,5 @@
 // ==============================================
 // Black Summer Project - Interactive Data Visualization
-// Author: Sviluppatore Web
 // Version: 2.1
 // ==============================================
 
@@ -493,30 +492,7 @@ function initTemperatureMap() {
 
 // Gestione video con lazy loading
 function initVideoPlayer() {
-  const videoContainer = document.querySelector('.video-container');
-  const videoPlaceholder = document.querySelector('.video-placeholder');
-  const playBtn = document.querySelector('.play-video-btn');
-  const lazyVideo = document.querySelector('.lazy-video');
-  
-  if (!videoContainer || !videoPlaceholder || !playBtn || !lazyVideo) return;
-  
-  playBtn.addEventListener('click', () => {
-    // Carica il video effettivo dall'attributo data-src
-    const videoSrc = lazyVideo.getAttribute('data-src');
-    
-    // Sostituisci l'iframe con un elemento video per maggiore controllo
-    const videoElement = document.createElement('video');
-    videoElement.src = videoSrc;
-    videoElement.controls = true;
-    videoElement.autoplay = true;
-    videoElement.className = 'active-video';
-    
-    // Sostituisci il placeholder con il video
-    videoContainer.replaceChild(videoElement, lazyVideo);
-    
-    // Nascondi il placeholder
-    videoPlaceholder.style.display = 'none';
-  });
+  // Non serve più nulla qui perché il video è sempre visibile
 }
 
 // Gestione lightbox per la galleria
@@ -644,3 +620,5 @@ function initKonamiCode() {
     });
   }
 }
+
+
