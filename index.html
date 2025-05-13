@@ -172,26 +172,23 @@
   </section>
 
   <!-- VIDEO con Lazy loading -->
-  <section class="video-section reveal-section">
-    <h2>Video Satellitari del Disastro</h2>
-    <div class="video-container">
-      <iframe
-        data-src="Pins-Story.Rife.mp4"
-        class="lazy-video"
-        title="Incendi Australia 2019-2020 - Video Satellitare"
-        allowfullscreen>
-      </iframe>
-      <div class="video-placeholder">
-        <button class="play-video-btn">
-          <svg viewBox="0 0 24 24" class="play-icon">
-            <path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
-          </svg>
-          <span>Avvia video</span>
-        </button>
-      </div>
+  
+  <!-- VIDEO con Lazy loading -->
+  <section class="video-section reveal-section" id="video">
+    <h2 class="text-center">Video: Black Summer in Australia</h2>
+    <p class="section-intro text-center">
+      Un breve documentario sugli incendi che hanno devastato l'Australia nel 2019-2020.
+    </p>
+    <div class="video-wrapper">
+      <video id="video_1" class="main-video" muted controls poster="media/anteprima.jpg">
+        <source src="media/Video_1.mp4" type="video/mp4">
+        Il tuo browser non supporta il tag video.
+      </video>
     </div>
-    <p class="video-caption">Immagini satellitari mostrano l'evoluzione degli incendi da novembre 2019 a febbraio 2020</p>
   </section>
+  
+  
+
 
   <!-- GALLERIA migliorata con lightbox -->
   <section class="gallery-section reveal-section" id="gallery">
